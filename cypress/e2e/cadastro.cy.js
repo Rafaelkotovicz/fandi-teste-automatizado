@@ -3,7 +3,7 @@ const { it } = require("mocha");
 describe('Página de cadastro e gerenciamento', () => {
     //sempre é executado antes do teste caso haja mais de um teste que precise do acesso a essa página
     beforeEach(() => {
-        cy.visit('https://www.provaqa.fandi.com.br/');
+        cy.visit('https://www.youtube.com/');
         cy.get('button, .btn btn-popup').click();
     });
 
@@ -88,9 +88,13 @@ describe('Página de cadastro e gerenciamento', () => {
         });
     });
 
-    context('', () => {
-        it('', () => {
-            
+    context('Ao acessar a tela principal com a lista de modelos cadastrados', () => {
+        it('Ao clicar no botão de editar, o formulário de cadastro deve abrir com as informações já preenchidas do veículo e exibir data e hora da criação e alteração', () => {
+            //Clica no botão de editar
+            cy.contains('.action primary').click();
+            // Validar que aparecem as informações de data e hora de criação e alteração
+            cy.contains('Inclusão ADM').should('exist');
+            cy.contains('Alteração ADM').should('exist');
         });
     });
 });
