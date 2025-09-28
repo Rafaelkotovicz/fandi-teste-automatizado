@@ -9,11 +9,11 @@ describe('Página de cadastro e gerenciamento', () => {
 
     it('Cadastro correto de novo modelo', () => {
     // Abrir formulário de cadastro
-    cy.contains('button', 'Novo modelo').click();
+    cy.contains('#botaoNovoVeiculo').click();
 
     // Preencher os campos necessários para o cadastro
-    cy.get('select[name="fabricante"]').select('CHEVROLET');
-    cy.get('select[name="familia"]').select('ASTRA HATCH');
+    cy.get('#novaFamilia').select('ASTRA HATCH');
+    cy.get('#novoFabricante').select('CHEVROLET');
     cy.get('input[name="molicar"]').type('12345');
     cy.get('input[name="modelo"]').type('ASTRA');
     cy.get('select[name="combustivel"]').select('Gasolina');
@@ -24,7 +24,7 @@ describe('Página de cadastro e gerenciamento', () => {
     cy.get('input[name="cavalos"]').type('110');
 
     // Salvar
-    cy.contains('button', 'Salvar').click();
+    cy.contains('#btnSalvar').click();
 
     // Verificar mensagem de sucesso
     cy.contains('Modelo Cadastrado com Sucesso').should('be.visible');
