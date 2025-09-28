@@ -31,8 +31,25 @@ describe('Página de cadastro e gerenciamento', () => {
 
 });
 
-    it('', () => {
-        
+    it('Não deve permitir salvar sem preencher os campos obrigatórios', () => {
+        // Abrir formulário de cadastro
+    cy.contains('#botaoNovoVeiculo').click();
+
+    // Tentar salvar sem preencher nada
+    cy.contains('#btnSalvar').click();
+
+    // Validar mensagens de erro nos campos obrigatórios
+    cy.get('#novaFamilia').parent().should('contain', 'Campo Obrigatório.');
+    cy.get('#novoFabricante').parent().should('contain', 'Campo Obrigatório.');
+    cy.get('input[name="modelo"]').parent().should('contain', 'Campo Obrigatório.');
+    cy.get('input[name="molicar"]').parent().should('contain', 'Campo Obrigatório.');
+    cy.get('select[name="combustivel"]').parent().should('contain', 'Campo Obrigatório.');
+    cy.get('input[name="portas"]').parent().should('contain', 'Campo Obrigatório.');
+    cy.get('input[name="anoInicio"]').parent().should('contain', 'Campo Obrigatório.');
+    cy.get('input[name="anoFim"]').parent().should('contain', 'Campo Obrigatório.');
+    cy.get('input[name="cilindradas"]').parent().should('contain', 'Campo Obrigatório.');
+    cy.get('input[name="cavalos"]').parent().should('contain', 'Campo Obrigatório.');
+
     });
 });
 
