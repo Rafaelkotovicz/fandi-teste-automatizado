@@ -81,5 +81,17 @@ describe('Página de cadastro e gerenciamento', () => {
             cy.get('.modal-content-wrapper').should('not.exist')
         });
     });
+
+    context('Ao acessar a tela principal do sitema', () => {
+        it('Deve ser exibida a lista de modelos cadastrados', () => {
+            cy.get('#tableModelos').should('be.visible');
+        });
+    });
+
+    context('', () => {
+        it('', () => {
+            
+        });
+    });
 });
 
