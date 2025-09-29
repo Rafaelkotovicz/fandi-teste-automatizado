@@ -89,8 +89,24 @@ describe('Página de cadastro e gerenciamento', () => {
     });
 
     context('Ao acessar a tela principal com a lista de modelos cadastrados', () => {
-        it('Ao clicar no botão de editar, o formulário de cadastro deve abrir com as informações já preenchidas do veículo e exibir data e hora da criação e alteração', () => {
+        it('Ao clicar no botão de editar, o formulário de cadastro deve abrir com as informações já preenchidas do veículo e exibir data e hora da criação e edição', () => {
             //Clica no botão de editar
+            cy.contains('.action primary').click();
+            // Validar que aparecem as informações de data e hora de criação e alteração
+            cy.contains('Inclusão ADM').should('exist');
+            cy.contains('Alteração ADM').should('exist');
+        });
+    });
+
+    context('Ao acessar a tela principal com a lista de modelos cadastrados', () => {
+        it('Ao clicar no botão de editar, o formulário de cadastro deve abrir com as informações já preenchidas do veículo e editar o número de portas corretamente', () => {
+            //Clica no botão de editar e abre o formulário de cadastro
+            cy.contains('.action primary').click();
+            //Preencher o número de portas
+            cy.get('input[name="portas"]').type('4');
+            // Salvar
+            cy.contains('#btnSalvar').click();
+            //Clica no botão de editar e abre o formulário de cadastro novamente
             cy.contains('.action primary').click();
             // Validar que aparecem as informações de data e hora de criação e alteração
             cy.contains('Inclusão ADM').should('exist');
