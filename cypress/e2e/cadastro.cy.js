@@ -113,5 +113,18 @@ describe('Página de cadastro e gerenciamento', () => {
             cy.contains('Alteração ADM').should('exist');
         });
     });
+
+    context('Ao acessar a tela principal com a lista de modelos cadastrados', () => {
+        it('Ao clicar no botão de editar, o formulário de cadastro deve abrir com as informações já preenchidas do veículo e editar o número de portas e depois clicar em cancelar a alteração deve ser descartada', () => {
+            //Clica no botão de editar e abre o formulário de cadastro
+            cy.contains('.action primary').click();
+            //Preencher o número de portas
+            cy.get('input[name="portas"]').type('4');
+            // Clicar em Cancelar
+            cy.contains('#btnCancelar').click()
+            // Verificar que o formulário foi fechado
+            cy.get('.modal-content-wrapper').should('not.exist')
+        });
+    });
 });
 
